@@ -3,13 +3,13 @@ name: Construindo-API-REST
 services:
   # Servidor PHP para a API
   api:
-    image: php:8.2-apache
+    build: .
     container_name: api-rest-php
     restart: "no"
     ports:
       - "80:80"
     volumes:
-      - ./api_status:/var/www/html
+      - .:/var/www/html
     depends_on:
       - db
     networks:

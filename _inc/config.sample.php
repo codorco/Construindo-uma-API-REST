@@ -2,11 +2,11 @@
 
 define('API_VERSION', '1.0.0');
 
-// api enable or disable
+// ativar ou desativar a API
 define('API_ACTIVE', true);
-define('API_MENSAGE', 'API esta em manutenção.');
+define('API_MESSAGE', '');
 
-// mysql config
+// configuração do MySQL
 define('MYSQL_HOST',            '');
 define('MYSQL_DATABASE',        '');
 define('MYSQL_USER',            '');
