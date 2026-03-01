@@ -1,0 +1,33 @@
+name: Construindo-API-REST
+
+services:
+  # Servidor PHP para a API
+  api:
+    image: php:8.2-apache
+    container_name: api-rest-php
+    restart: "no"
+    ports:
+      - "80:80"
+    volumes:
+      - ./api_status:/var/www/html
+    depends_on:
+      - db
+    networks:
+      - api-network
+
+  # Banco de Dados MySQL
+  db:
+    image: mysql:8.0
+    container_name: api-rest-db
+    restart: "no"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: api_rest_db
+    ports:
+      - "3306:3306"
+    networks:
+      - api-network
+
+networks:
+  api-network:
+    driver: bridge
