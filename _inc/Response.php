@@ -7,11 +7,13 @@ class Response
     private $response_data;
     private $integration_key;
 
+    private $aditional_fields = [];
+
     public function __construct()
     {
         $this->status = 'success';
         $this->error_message = '';
-        $this->response_data = null; 
+        $this->response_data = null;
         $this->integration_key = null;
     }
 
@@ -35,14 +37,29 @@ class Response
         $this->integration_key = $key;
     }
 
+    public function set_aditional_field($field_name, $field_value)
+    {
+        if(!key_exists($field_name, $this->aditional_fields)){
+            $this->aditional_fields[$field_name] = $field_value;
+        }
+    }
+
     public function response()
     {
         $tmp = [];
         $tmp['status'] = $this->status;
-        if(!empty($this->error_message)){
+        if (!empty($this->error_message)) {
             $tmp['error_message'] = $this->error_message;
         }
         $tmp['data'] = $this->response_data;
+
+        // campos adicionais
+        if(!empty($this->aditional_fields)){
+            foreach($this->aditional_fields as $key => $value){
+                $tmp[$key] = $value;
+            }
+        }
+
         $tmp['time_response'] = time();
         $tmp['api_version'] = API_VERSION;
 

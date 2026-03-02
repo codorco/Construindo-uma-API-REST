@@ -6,6 +6,7 @@ header("Content-Type: application/json; charset=UTF-8");
 require_once('config.php');
 require_once('Database.php');
 require_once('Response.php');
+require_once('Helper.php');
 
 // define o fuso horário da API
 date_default_timezone_set('Europe/Lisbon');

@@ -11,3 +11,5 @@ define('MYSQL_HOST',            '');
 define('MYSQL_DATABASE',        '');
 define('MYSQL_USER',            '');
 define('MYSQL_PASS',            '');
+
+// substitua os valores acima pelas suas configurações de banco de dados MySQL
