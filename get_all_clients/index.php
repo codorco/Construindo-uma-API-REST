@@ -9,6 +9,9 @@ check_request_method($request_method, 'GET');
 
 $results = $db->execute_query("SELECT * FROM clientes");
 
+// integration key
+check_integration_key_get();
+
 $res->set_status('success');
 $res->set_response_data($results->results);
 
