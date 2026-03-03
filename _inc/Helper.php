@@ -12,7 +12,7 @@ function check_request_method($request_method, $expected_request_method)
 
 function check_integration_key_get()
 {
-    if(isset($_GET['integration_key'])){
+    if (isset($_GET['integration_key'])) {
         global $res;
         $res->set_integration_key($_GET['integration_key']);
     }
@@ -24,4 +24,24 @@ function missing_request_parameter($parameter)
     $res->set_status('error');
     $res->set_error_message('Missing parameter: ' . $parameter);
     $res->response();
+}
+
+
+function check_required_fields_in_json($data, $fields)
+{
+    foreach ($fields as $key) {
+        if (!key_exists($key, $data)) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+function check_integration_key_json($data)
+{
+    if(key_exists('integration_key', $data)){
+        global $res;
+        $res->set_integration_key($data['integration_key']);
+    }
 }
