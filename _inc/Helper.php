@@ -17,3 +17,11 @@ function check_integration_key_get()
         $res->set_integration_key($_GET['integration_key']);
     }
 }
+
+function missing_request_parameter($parameter)
+{ 
+    global $res;
+    $res->set_status('error');
+    $res->set_error_message('Missing parameter: ' . $parameter);
+    $res->response();
+}
