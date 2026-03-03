@@ -1,13 +1,13 @@
 <?php
 
-// returns a client by id
+// retorna um cliente por id
 
 require_once('../_inc/init.php');
 
-// check if request method is valid
+// verificar se o método da requisição é válido
 check_request_method($request_method, 'GET');
 
-// integration key
+// chave de integração
 check_integration_key_get();
 
 // verifica se o id solicitado está presente
